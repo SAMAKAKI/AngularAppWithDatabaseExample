@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="errorMsg">
+    <strong>{{ errorMsg }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="toEmptyErrorMsg()"></button>
+  </div>
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="successMsg">
+    <strong>{{ successMsg }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="toEmptySuccessMsg()"></button>
+  </div>
+
+  <form class="w-25" [formGroup]="itemFrom">
+    <div class="mb-3">
+      <label for="Name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="Name" formControlName="name">
+    </div>
+    <div class="mb-3">
+      <label for="Description" class="form-label">Description</label>
+      <input type="text" class="form-control" id="Description" formControlName="description">
+    </div>
+    <div class="mb-3 d-none">
+      <label for="dateCreation" class="form-label">Date Creation</label>
+      <input type="text" class="form-control" id="dateCreation" formControlName="dateCreation" [(ngModel)]="now">
+    </div>
+    <button type="submit" class="btn btn-primary" *ngIf="!getparamid" (click)="itemSubmit()">Submit</button>
+    <button type="submit" class="btn btn-success" *ngIf="getparamid" (click)="itemUpdate()">Update</button>
+  </form>
+</div>
